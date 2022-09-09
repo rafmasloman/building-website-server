@@ -1,0 +1,27 @@
+customers : {
+    name: string,
+    email: string,
+    password: string,
+    cartId: [{_id: ObjectId}]
+}
+
+items : {
+    name: string,
+    description: string,
+    price: number,
+    imageId : [{_id: ObjectId}],
+    discountId: {_id: ObjectId}
+} 
+
+discount {
+    percent: number
+}
+
+image{
+    imageUrl: string
+}
+
+cart: {
+    itemsId: [{_id: ObjectId}],
+    quantity: number
+}
