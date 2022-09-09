@@ -1,4 +1,5 @@
 const { productModel } = require('../models/items.model');
+const { imageModel } = require('../models/imageModel');
 
 const viewDashboard = {
   adminDashboard: (req, res) => {
@@ -20,15 +21,22 @@ const productController = {
   addProduct: async (req, res) => {
     const { name, price, location, city } = req.body;
     const Product = await productModel();
+    const Image = await imageModel();
 
+    const imageUrl = new Image({
+      url: 'imageTest',
+    });
+
+    imageUrl.save();
     const date = new Date();
-    const query = {
+    const query = new Product({
       name,
       price,
       location,
       city,
+      imageUrl: imageUrl,
       createdAt: date,
-    };
+    });
 
     Product.create(query, function (err, result) {
       if (err) {

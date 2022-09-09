@@ -15,6 +15,8 @@ app.use(
   ),
 );
 
+app.use('/img', express.static(path.join(__dirname, 'public/assets/img')));
+
 app.use('/admin', adminRouter);
 app.use('/api/v1', apiRouter);
 
